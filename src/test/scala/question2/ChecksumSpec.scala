@@ -23,4 +23,5 @@ class ChecksumSpec extends FlatSpec with Matchers {
 
     Checksum(fileStream) should be(45351)
   }
+
 }
