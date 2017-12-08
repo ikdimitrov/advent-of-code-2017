@@ -14,6 +14,7 @@ class Captcha {
   }
 
   def sumSameHalfway(input: List[Int]) = {
+
     val halfway = input.length / 2
 
     input.zip(input.drop(halfway))

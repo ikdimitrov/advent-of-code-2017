@@ -1,3 +1,7 @@
+# Execute the tests
+
+```sbt clean test```
+
 # Question 1
 
 --- Day 1: Inverse Captcha ---
