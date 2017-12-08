@@ -1,3 +1,7 @@
+# Exercises
+
+http://adventofcode.com/2017
+
 # Execute the tests
 
 ```sbt clean test```
