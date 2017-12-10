@@ -29,8 +29,8 @@ class MazeRunnerSpec extends FlatSpec with Matchers {
     mazeRunner.computePart2(fileStream) should be(10)
   }
 
-  it should "compute the correct steps for part two" in {
-
+  ignore should "compute the correct steps for part two" in {
+    // takes time to run
     val fileStream: InputStream = getClass.getResourceAsStream("/input_question_5_part_2.txt")
 
     mazeRunner.computePart2(fileStream) should be(23948711)

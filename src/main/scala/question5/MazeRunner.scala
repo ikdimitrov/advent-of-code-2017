@@ -24,21 +24,23 @@ case class MazeRunner() {
     }
   }
 
-  private def incrementDependingOnPositionValue(list: List[Int], position: Int, value: Int): List[Int] = {
-    val newValue = if (value >= 3) value - 1 ; else value + 1
-    list.updated(position, newValue)
-  }
-
   def computePart1(inputStream: InputStream): Long = {
-    val initialMazeState = Source.fromInputStream(inputStream).getLines.map(_.toInt).toList
+    val initialMazeState = loadData(inputStream)
 
     countJumpsToExit(initialMazeState, 0, 0, value => value + 1)
   }
 
   def computePart2(inputStream: InputStream): Long = {
-    val initialMazeState = Source.fromInputStream(inputStream).getLines.map(_.toInt).toList
+    val initialMazeState = loadData(inputStream)
 
     countJumpsToExit(initialMazeState, 0, 0, value => {if (value >= 3) value - 1 ; else value + 1})
   }
 
+  private def loadData(inputStream: InputStream) = {
+    Source
+      .fromInputStream(inputStream)
+      .getLines
+      .map(_.toInt)
+      .toList
+  }
 }
