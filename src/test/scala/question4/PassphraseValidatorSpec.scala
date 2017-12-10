@@ -23,7 +23,7 @@ class PassphraseValidatorSpec extends FlatSpec with Matchers {
   }
 
   it should "count the number of valid passphrases" in {
-    val fileStream: InputStream = getClass.getResourceAsStream("/input_question_4_part1.txt")
+    val fileStream: InputStream = getClass.getResourceAsStream("/input_question_4_part_1.txt")
 
     validator.countValid(fileStream) should be(337)
   }
@@ -47,7 +47,7 @@ class PassphraseValidatorSpec extends FlatSpec with Matchers {
   }
 
   it should "count the number of valid passphrases in the anagrams case" in {
-    val fileStream: InputStream = getClass.getResourceAsStream("/input_question_4_part2.txt")
+    val fileStream: InputStream = getClass.getResourceAsStream("/input_question_4_part_2.txt")
 
     validator.countValid(fileStream, validator.checkAnagrams) should be(231)
   }

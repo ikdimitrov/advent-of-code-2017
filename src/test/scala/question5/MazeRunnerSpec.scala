@@ -12,13 +12,27 @@ class MazeRunnerSpec extends FlatSpec with Matchers {
 
     val fileStream: InputStream = getClass.getResourceAsStream("/short_input_question_5_part_1.txt")
 
-    mazeRunner.compute(fileStream) should be(5)
+    mazeRunner.computePart1(fileStream) should be(5)
   }
 
   it should "compute the correct steps for part one" in {
 
     val fileStream: InputStream = getClass.getResourceAsStream("/input_question_5_part_1.txt")
 
-    mazeRunner.compute(fileStream) should be(318883)
+    mazeRunner.computePart1(fileStream) should be(318883)
+  }
+
+  it should "compute that 10 steps are required to escape small maze in part 2" in {
+
+    val fileStream: InputStream = getClass.getResourceAsStream("/short_input_question_5_part_1.txt")
+
+    mazeRunner.computePart2(fileStream) should be(10)
+  }
+
+  it should "compute the correct steps for part two" in {
+
+    val fileStream: InputStream = getClass.getResourceAsStream("/input_question_5_part_2.txt")
+
+    mazeRunner.computePart2(fileStream) should be(318883)
   }
 }
