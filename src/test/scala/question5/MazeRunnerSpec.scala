@@ -33,6 +33,6 @@ class MazeRunnerSpec extends FlatSpec with Matchers {
 
     val fileStream: InputStream = getClass.getResourceAsStream("/input_question_5_part_2.txt")
 
-    mazeRunner.computePart2(fileStream) should be(318883)
+    mazeRunner.computePart2(fileStream) should be(23948711)
   }
 }
