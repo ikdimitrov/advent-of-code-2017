@@ -22,7 +22,7 @@ class MemoryReallocatorSpec extends FlatSpec with Matchers {
   it should "compute the correct number of steps for part one big input" in {
     val testInput = Array(4,	1,	15,	12,	0,	9,	9,	5,	5,	8,	7,	3,	14,	5,	12,	3)
 
-    memoryReallocator.computeStepsFor(testInput) should be(5)
+    memoryReallocator.computeStepsFor(testInput) should be(6681)
   }
 
 }
