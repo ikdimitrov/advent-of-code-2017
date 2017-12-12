@@ -2,7 +2,7 @@ package question3
 
 import org.scalatest.{FlatSpec, Matchers}
 
-class SpiralMemorySpec extends FlatSpec with Matchers  {
+class SpiralMemorySpec extends FlatSpec with Matchers {
 
   private val spiralMemory = SpiralMemory()
 
