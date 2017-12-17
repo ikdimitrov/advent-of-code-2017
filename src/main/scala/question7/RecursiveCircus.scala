@@ -37,34 +37,25 @@ case class RecursiveCircus() {
 
     val rootNode: Node = Node.generateTree(circusNodes, rootName)
 
-    findCorrectWeightForUnbalancedNode(rootNode)._2
+    findCorrectWeightForUnbalancedNode(rootNode)
   }
 
-  private def findCorrectWeightForUnbalancedNode(node: Node): (Boolean, Int) = {
+  private def findCorrectWeightForUnbalancedNode(node: Node, imbalance: Int = 0): Int = {
 
-    if (node.children.isDefined) {
-      val tuples = node.children
-        .get
-        .map(node => findCorrectWeightForUnbalancedNode(node))
-        .filter(t => t._1 == true)
-
-      if (tuples.size > 0) {
-        tuples.head
-      }
-      else computeWeightIfUnbalanced(node.children.get)
+    if (imbalance != 0 && checkChildrenBalanced(node)) {
+      node.weight - imbalance
     } else {
-      (false, 0)
+      val mostCommonOverallWeight = node.children.get.groupBy(n => n.overallWeight).maxBy(_._2.size)._1
+      val badNode = node.children.get.find(t => t.overallWeight != mostCommonOverallWeight).get
+      findCorrectWeightForUnbalancedNode(badNode, Math.abs(badNode.overallWeight - mostCommonOverallWeight))
     }
 
   }
 
-  def computeWeightIfUnbalanced(nodes: List[Node]) = {
-
-    val sortedWeights = nodes.map(n => (n.weight, n.overallWeight)).sortBy(t => t._2)
-    val min = sortedWeights.head
-    val max = sortedWeights.last
-
-    (max._2 != min._2, max._1 - (max._2 - min._2))
+  def checkChildrenBalanced(node: Node): Boolean = {
+    if (node.children.isDefined) {
+      node.children.get.map(_.overallWeight).distinct.size == 1
+    } else true
   }
 
   private def loadData(inputStream: InputStream): Iterator[String] = {
